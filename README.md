@@ -83,7 +83,6 @@ eval/                 eval_set.json, run_eval.py, run_table_eval.py, results
 scripts/              download_data.py, make_employees.py, inventory.py
 cli.py                command line
 smoke_test.py         environment check
-LEARNING.md           concepts, pitfalls and interview questions per milestone
 chroma_db/ .cache/ logs/   generated, git-ignored
 ```
 
