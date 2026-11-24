@@ -1,0 +1,20 @@
+# Secrets
+.env
+
+# Virtual environment
+.venv/
+
+# Local vector database (rebuilt by ingestion), embedding cache, request logs
+chroma_db/
+.cache/
+logs/
+
+# Python cruft
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Editors / OS
+.vscode/
+.DS_Store
+Thumbs.db
