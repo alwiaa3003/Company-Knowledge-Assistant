@@ -1,0 +1,61 @@
+employee_id,name,team,role,location,salary_inr,start_date,manager_id
+1001,Zarvi Mockerjee,Data,Head of Data,Bengaluru,5070000,2015-08-17,
+1002,Tovan Madeupta,Data,Data Lead,Bengaluru,3750000,2017-04-09,1001
+1003,Quillo Testwala,Data,Data Lead,Bengaluru,3270000,2020-06-09,1001
+1004,Cyndel Sampleton,Data,Data Analyst,Delhi,1730000,2021-05-16,1001
+1005,Zarvi Fictiona,Data,ML Engineer,Mumbai,1630000,2020-09-28,1001
+1006,Plivo Placeholdar,Data,Data Engineer,Bengaluru,1680000,2019-02-04,1002
+1007,Nimbo Testwala,Data,ML Engineer,Mumbai,1880000,2019-09-25,1001
+1008,Cyndel Mockerjee,Data,Data Analyst,Delhi,1660000,2019-12-14,1001
+1009,Quillo Sampleton,Data,Data Analyst,Pune,1300000,2021-08-06,1003
+1010,Ruvan Mockerjee,Data,Data Analyst,Mumbai,2010000,2025-06-04,1001
+1011,Delmi Sampleton,Data,ML Engineer,Pune,2090000,2019-03-06,1002
+1012,Yuneth Madeupta,Data,Data Analyst,Hyderabad,1400000,2024-02-26,1003
+1013,Plivo Testwala,Data,ML Engineer,Hyderabad,1240000,2021-08-10,1002
+1014,Mirabex Sampleton,Data,ML Engineer,Delhi,2110000,2021-11-07,1002
+1015,Korra Notrealan,Platform,Head of Platform,Hyderabad,6140000,2016-10-06,
+1016,Elbrin Mockerjee,Platform,Platform Lead,Hyderabad,3310000,2021-12-28,1015
+1017,Cyndel Madeupta,Platform,Platform Lead,Pune,3950000,2025-03-14,1015
+1018,Ruvan Dummyraj,Platform,Senior Software Engineer,Hyderabad,2370000,2025-06-06,1017
+1019,Quillo Placeholdar,Platform,Software Engineer,Hyderabad,2000000,2025-06-15,1017
+1020,Mirabex Examplekar,Platform,Site Reliability Engineer,Mumbai,1960000,2024-06-23,1015
+1021,Cyndel Testwala,Platform,Site Reliability Engineer,Bengaluru,2070000,2025-01-14,1016
+1022,Orsa Examplekar,Platform,Senior Software Engineer,Hyderabad,2780000,2025-05-17,1017
+1023,Nimbo Madeupta,Platform,Senior Software Engineer,Hyderabad,2840000,2024-12-10,1015
+1024,Brumo Pretendra,Platform,Site Reliability Engineer,Hyderabad,1390000,2023-11-10,1015
+1025,Brumo Testwala,Platform,Senior Software Engineer,Delhi,2610000,2022-12-23,1016
+1026,Delmi Mockerjee,Platform,Software Engineer,Hyderabad,1270000,2022-03-07,1016
+1027,Mirabex Placeholdar,Sales,Head of Sales,Hyderabad,4670000,2016-05-08,
+1028,Cyndel Fictiona,Sales,Sales Lead,Hyderabad,3840000,2024-12-17,1027
+1029,Sazzi Sampleton,Sales,Sales Lead,Delhi,3960000,2021-10-05,1027
+1030,Delmi Notrealan,Sales,Senior Account Executive,Delhi,2770000,2022-12-20,1029
+1031,Mirabex Dummyraj,Sales,Account Executive,Bengaluru,1950000,2019-03-19,1027
+1032,Faxel Testwala,Sales,Senior Account Executive,Bengaluru,3100000,2023-02-18,1029
+1033,Mirabex Testwala,Sales,Account Executive,Pune,1290000,2022-03-04,1029
+1034,Ilka Sampleton,Sales,Sales Development Rep,Delhi,1360000,2023-03-06,1029
+1035,Ilka Examplekar,Sales,Senior Account Executive,Hyderabad,2320000,2025-01-16,1029
+1036,Delmi Examplekar,Sales,Sales Development Rep,Mumbai,1790000,2023-10-28,1027
+1037,Tovan Testwala,Sales,Senior Account Executive,Mumbai,3130000,2022-02-22,1029
+1038,Tovan Sampleton,Product,Head of Product,Bengaluru,4980000,2016-11-25,
+1039,Wendro Fictiona,Product,Product Lead,Mumbai,3230000,2022-12-30,1038
+1040,Mirabex Notrealan,Product,Product Manager,Delhi,1320000,2024-05-16,1039
+1041,Zarvi Placeholdar,Product,Senior Product Manager,Hyderabad,2410000,2024-04-18,1038
+1042,Korra Examplekar,Product,Product Designer,Bengaluru,1410000,2024-06-09,1039
+1043,Nimbo Notrealan,Product,Product Designer,Pune,1740000,2023-01-31,1039
+1044,Orsa Sampleton,Product,Product Manager,Bengaluru,1940000,2023-07-06,1039
+1045,Ilka Madeupta,Product,Product Designer,Delhi,1400000,2025-05-15,1038
+1046,Yuneth Placeholdar,Product,Product Manager,Delhi,1280000,2022-09-05,1038
+1047,Ruvan Placeholdar,Finance,Head of Finance,Bengaluru,5980000,2016-04-26,
+1048,Quillo Pretendra,Finance,Finance Lead,Bengaluru,3530000,2023-01-25,1047
+1049,Plivo Sampleton,Finance,Financial Analyst,Pune,1700000,2023-11-18,1048
+1050,Orsa Notrealan,Finance,Senior Financial Analyst,Pune,3160000,2023-12-07,1047
+1051,Tovan Placeholdar,Finance,Accountant,Delhi,1470000,2016-07-03,1047
+1052,Yuneth Notrealan,Finance,Accountant,Delhi,2100000,2023-07-09,1048
+1053,Tovan Fictiona,Finance,Senior Financial Analyst,Pune,2340000,2024-11-11,1048
+1054,Orsa Pretendra,Finance,Senior Financial Analyst,Hyderabad,3110000,2024-09-21,1047
+1055,Korra Mockerjee,HR,Head of HR,Hyderabad,5140000,2016-12-03,
+1056,Zarvi Dummyraj,HR,HR Lead,Hyderabad,3810000,2017-07-29,1055
+1057,Wendro Madeupta,HR,HR Business Partner,Mumbai,1910000,2019-06-20,1056
+1058,Elbrin Madeupta,HR,HR Generalist,Bengaluru,1670000,2018-04-05,1055
+1059,Quillo Mockerjee,HR,HR Generalist,Pune,1250000,2021-10-28,1055
+1060,Faxel Placeholdar,HR,HR Business Partner,Pune,2190000,2020-01-05,1056
