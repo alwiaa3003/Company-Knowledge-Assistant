@@ -12,8 +12,7 @@ import time
 from google import genai
 from google.genai import types
 
-sys.path.insert(0, "src")  # lets us `import kb` without installing the package
-from kb.config import Settings, estimate_cost, load_settings  # noqa: E402
+from kb.config import Settings, estimate_cost, load_settings
 
 
 def check_key() -> Settings:

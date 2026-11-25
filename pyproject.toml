@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "knowledgelens"
+version = "0.2.0"
+description = "Company Knowledge Assistant: RAG over PDFs + safe pandas table queries, with a Google ADK multi-agent layer"
+requires-python = ">=3.10"
+# Exact pins live in requirements.txt; install with:  pip install -r requirements.txt && pip install -e .
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["kb*", "kl_agents*"]

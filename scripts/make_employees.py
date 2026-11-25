@@ -17,7 +17,7 @@ from pathlib import Path
 
 OUT = Path(__file__).resolve().parents[1] / "data" / "tables" / "employees.csv"
 SEED = 42
-TEAM_SIZES = {"Data": 14, "Platform": 12, "Sales": 11, "Product": 9, "Finance": 8, "HR": 6}  # = 60
+TEAM_SIZES = {"Data": 14, "Platform": 12, "Sales": 11, "Product": 9, "Finance": 8, "HR": 6}
 LOCATIONS = ["Bengaluru", "Hyderabad", "Pune", "Mumbai", "Delhi"]
 ROLES: dict[str, list[str]] = {
     "Data": ["Data Analyst", "Data Engineer", "ML Engineer", "Senior Data Engineer"],

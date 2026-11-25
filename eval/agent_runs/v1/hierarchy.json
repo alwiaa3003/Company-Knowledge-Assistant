@@ -1,0 +1,848 @@
+[
+ {
+  "id": "D1",
+  "answer": "Employees must disclose any actual or potential conflict of interest in writing to their manager and the Ethics & Compliance Office within ten (10) business days of becoming aware of it [acme_employee_policy_handbook.pdf p.3].",
+  "sources": [
+   {
+    "file": "acme_employee_policy_handbook.pdf",
+    "page": 3
+   }
+  ],
+  "agents": [
+   "coordinator",
+   "docs_agent",
+   "critic"
+  ],
+  "tools": [
+   "search_documents",
+   "docs_agent"
+  ],
+  "tool_calls": [
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 10.198,
+    "duration_s": 0.112,
+    "status": "success",
+    "args": {
+     "question": "conflict of interest disclose business days"
+    }
+   },
+   {
+    "name": "docs_agent",
+    "agent": "coordinator",
+    "start_s": 1.955,
+    "duration_s": 14.005,
+    "status": null,
+    "args": {
+     "request": "Within how many business days must an employee disclose a conflict of interest?"
+    }
+   }
+  ],
+  "llm_calls": 5,
+  "llm_calls_by_agent": {
+   "coordinator": 2,
+   "docs_agent": 2,
+   "critic": 1
+  },
+  "input_tokens": 3936,
+  "output_tokens": 163,
+  "latency_s": 29.92,
+  "generation_time_s": 17.136,
+  "tokens_per_sec": 9.5,
+  "est_cost_usd": 0.0015883,
+  "status": "ok",
+  "trace_id": "2e2b141b6a8a965f5e4d24d6fa1cf52a",
+  "errors": []
+ },
+ {
+  "id": "D2",
+  "answer": "Employees must report lost or stolen devices to IT Security immediately, and no later than four (4) hours after discovery [acme_employee_policy_handbook.pdf p.7].",
+  "sources": [
+   {
+    "file": "acme_employee_policy_handbook.pdf",
+    "page": 7
+   }
+  ],
+  "agents": [
+   "coordinator",
+   "docs_agent",
+   "critic"
+  ],
+  "tools": [
+   "search_documents",
+   "docs_agent"
+  ],
+  "tool_calls": [
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 7.162,
+    "duration_s": 1.53,
+    "status": "success",
+    "args": {
+     "question": "lost work laptop report time to whom"
+    }
+   },
+   {
+    "name": "docs_agent",
+    "agent": "coordinator",
+    "start_s": 1.235,
+    "duration_s": 15.804,
+    "status": null,
+    "args": {
+     "request": "lost work laptop report time to whom"
+    }
+   }
+  ],
+  "llm_calls": 5,
+  "llm_calls_by_agent": {
+   "coordinator": 2,
+   "docs_agent": 2,
+   "critic": 1
+  },
+  "input_tokens": 4066,
+  "output_tokens": 135,
+  "latency_s": 24.973,
+  "generation_time_s": 12.006,
+  "tokens_per_sec": 11.2,
+  "est_cost_usd": 0.0015573,
+  "status": "ok",
+  "trace_id": "f996e5e30278b2f6fd568c0c97ef0988",
+  "errors": []
+ },
+ {
+  "id": "D3",
+  "answer": "In the RAG-Sequence model, the same retrieved document is used to predict the complete target sequence [rag_lewis_2020.pdf p.3]. In contrast, the RAG-Token model can draw a different latent document for each individual target token, allowing the generator to combine content from multiple documents when producing an answer [rag_lewis_2020.pdf p.3].",
+  "sources": [
+   {
+    "file": "rag_lewis_2020.pdf",
+    "page": 3
+   }
+  ],
+  "agents": [
+   "coordinator",
+   "docs_agent",
+   "critic"
+  ],
+  "tools": [
+   "search_documents",
+   "docs_agent"
+  ],
+  "tool_calls": [
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 6.856,
+    "duration_s": 0.832,
+    "status": "success",
+    "args": {
+     "question": "What is the difference between RAG-Sequence and RAG-Token"
+    }
+   },
+   {
+    "name": "docs_agent",
+    "agent": "coordinator",
+    "start_s": 1.745,
+    "duration_s": 11.397,
+    "status": null,
+    "args": {
+     "request": "What is the difference between RAG-Sequence and RAG-Token in the RAG paper?"
+    }
+   }
+  ],
+  "llm_calls": 5,
+  "llm_calls_by_agent": {
+   "coordinator": 2,
+   "docs_agent": 2,
+   "critic": 1
+  },
+  "input_tokens": 4662,
+  "output_tokens": 249,
+  "latency_s": 25.15,
+  "generation_time_s": 6.353,
+  "tokens_per_sec": 39.2,
+  "est_cost_usd": 0.0020211,
+  "status": "ok",
+  "trace_id": "d44d402a5af23026f5bbab3250b9ad98",
+  "errors": []
+ },
+ {
+  "id": "D4",
+  "answer": "The base Transformer employs $h = 8$ parallel attention layers, or heads [attention_is_all_you_need.pdf p.5]. The dimension of each head is $d_k = d_v = d_{model}/h = 64$ [attention_is_all_you_need.pdf p.5, attention_is_all_you_need.pdf p.9].",
+  "sources": [
+   {
+    "file": "attention_is_all_you_need.pdf",
+    "page": 5
+   },
+   {
+    "file": "attention_is_all_you_need.pdf p.5, attention_is_all_you_need.pdf",
+    "page": 9
+   }
+  ],
+  "agents": [
+   "coordinator",
+   "docs_agent",
+   "critic"
+  ],
+  "tools": [
+   "search_documents",
+   "docs_agent"
+  ],
+  "tool_calls": [
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 7.953,
+    "duration_s": 0.566,
+    "status": "success",
+    "args": {
+     "question": "attention heads base Transformer dimension of each head"
+    }
+   },
+   {
+    "name": "docs_agent",
+    "agent": "coordinator",
+    "start_s": 1.72,
+    "duration_s": 12.749,
+    "status": null,
+    "args": {
+     "request": "How many attention heads does the base Transformer use, and what is the dimension of each head?"
+    }
+   }
+  ],
+  "llm_calls": 5,
+  "llm_calls_by_agent": {
+   "coordinator": 2,
+   "docs_agent": 2,
+   "critic": 1
+  },
+  "input_tokens": 5064,
+  "output_tokens": 248,
+  "latency_s": 31.647,
+  "generation_time_s": 15.322,
+  "tokens_per_sec": 16.2,
+  "est_cost_usd": 0.0021392,
+  "status": "ok",
+  "trace_id": "5fd1e80794fd514dbcec8ba767f7a15a",
+  "errors": []
+ },
+ {
+  "id": "T1",
+  "answer": "There are 17 employees who work in Hyderabad. (employees.csv (17 rows matched))",
+  "sources": [
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (17 rows matched)"
+   }
+  ],
+  "agents": [
+   "coordinator",
+   "table_agent",
+   "critic"
+  ],
+  "tools": [
+   "query_table",
+   "table_agent"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "table_agent",
+    "start_s": 7.173,
+    "duration_s": 6.129,
+    "status": "success",
+    "args": {
+     "question": "How many employees work in Hyderabad?"
+    }
+   },
+   {
+    "name": "table_agent",
+    "agent": "coordinator",
+    "start_s": 1.191,
+    "duration_s": 18.749,
+    "status": null,
+    "args": {
+     "request": "How many employees work in Hyderabad?"
+    }
+   }
+  ],
+  "llm_calls": 6,
+  "llm_calls_by_agent": {
+   "coordinator": 2,
+   "table_agent": 2,
+   "query_table (kb tool)": 1,
+   "critic": 1
+  },
+  "input_tokens": 2594,
+  "output_tokens": 196,
+  "latency_s": 31.534,
+  "generation_time_s": 13.119,
+  "tokens_per_sec": 14.9,
+  "est_cost_usd": 0.0012682,
+  "status": "ok",
+  "trace_id": "d239320a70c23c380716422b6f0376dc",
+  "errors": []
+ },
+ {
+  "id": "T2",
+  "answer": "The average salary in the Sales team is approximately 2,743,636.36 INR. (employees.csv (11 rows matched))",
+  "sources": [
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (11 rows matched)"
+   }
+  ],
+  "agents": [
+   "coordinator",
+   "table_agent",
+   "critic"
+  ],
+  "tools": [
+   "query_table",
+   "table_agent"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "table_agent",
+    "start_s": 7.233,
+    "duration_s": 10.318,
+    "status": "success",
+    "args": {
+     "question": "What is the average salary in the Sales team?"
+    }
+   },
+   {
+    "name": "table_agent",
+    "agent": "coordinator",
+    "start_s": 1.633,
+    "duration_s": 17.403,
+    "status": null,
+    "args": {
+     "request": "What is the average salary in the Sales team?"
+    }
+   }
+  ],
+  "llm_calls": 6,
+  "llm_calls_by_agent": {
+   "coordinator": 2,
+   "table_agent": 2,
+   "query_table (kb tool)": 1,
+   "critic": 1
+  },
+  "input_tokens": 2706,
+  "output_tokens": 234,
+  "latency_s": 35.26,
+  "generation_time_s": 21.088,
+  "tokens_per_sec": 11.1,
+  "est_cost_usd": 0.0013968,
+  "status": "ok",
+  "trace_id": "23a8e3cf2a5026b22a88c16b0dfb6a45",
+  "errors": []
+ },
+ {
+  "id": "T3",
+  "answer": "The HR team has the fewest employees, with 6 employees. (employees.csv (60 rows matched))",
+  "sources": [
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (60 rows matched)"
+   }
+  ],
+  "agents": [
+   "coordinator",
+   "table_agent",
+   "critic"
+  ],
+  "tools": [
+   "query_table",
+   "table_agent"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "table_agent",
+    "start_s": 7.259,
+    "duration_s": 27.571,
+    "status": "success",
+    "args": {
+     "question": "Which team has the fewest employees?"
+    }
+   },
+   {
+    "name": "table_agent",
+    "agent": "coordinator",
+    "start_s": 0.762,
+    "duration_s": 39.537,
+    "status": null,
+    "args": {
+     "request": "Which team has the fewest employees?"
+    }
+   }
+  ],
+  "llm_calls": 6,
+  "llm_calls_by_agent": {
+   "coordinator": 2,
+   "table_agent": 2,
+   "query_table (kb tool)": 1,
+   "critic": 1
+  },
+  "input_tokens": 2631,
+  "output_tokens": 173,
+  "latency_s": 52.79,
+  "generation_time_s": 33.296,
+  "tokens_per_sec": 5.2,
+  "est_cost_usd": 0.0012218,
+  "status": "ok",
+  "trace_id": "4cbde8635b6bd7553871a3bce47a18ca",
+  "errors": []
+ },
+ {
+  "id": "M1",
+  "answer": "There are 14 employees in the Data team. (employees.csv (14 rows matched))\n\nMany roles at Acme support remote or hybrid schedules, with eligibility determined by role and business need [acme_employee_policy_handbook.pdf p.7]. Remote employees are expected to maintain a safe, ergonomic, and professional workspace, remain reachable and responsive during agreed core hours, protect company data by using secure networks (including a VPN for restricted systems), and report any tax or immigration implications of cross-border remote work to HR before relocating [acme_employee_policy_handbook.pdf p.7].",
+  "sources": [
+   {
+    "file": "acme_employee_policy_handbook.pdf",
+    "page": 7
+   },
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (14 rows matched)"
+   }
+  ],
+  "agents": [
+   "coordinator",
+   "table_agent",
+   "docs_agent",
+   "critic"
+  ],
+  "tools": [
+   "query_table",
+   "search_documents",
+   "table_agent",
+   "search_documents",
+   "docs_agent"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "table_agent",
+    "start_s": 7.554,
+    "duration_s": 12.167,
+    "status": "success",
+    "args": {
+     "question": "How many employees are in the Data team?"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 20.91,
+    "duration_s": 0.019,
+    "status": "success",
+    "args": {
+     "question": "remote work"
+    }
+   },
+   {
+    "name": "table_agent",
+    "agent": "coordinator",
+    "start_s": 1.176,
+    "duration_s": 24.276,
+    "status": null,
+    "args": {
+     "request": "How many people are in the Data team?"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 31.026,
+    "duration_s": 0.512,
+    "status": "success",
+    "args": {
+     "question": "remote and hybrid work requirements rules"
+    }
+   },
+   {
+    "name": "docs_agent",
+    "agent": "coordinator",
+    "start_s": 1.181,
+    "duration_s": 36.929,
+    "status": null,
+    "args": {
+     "request": "What does the handbook say about remote work?"
+    }
+   }
+  ],
+  "llm_calls": 9,
+  "llm_calls_by_agent": {
+   "coordinator": 2,
+   "table_agent": 2,
+   "query_table (kb tool)": 1,
+   "docs_agent": 3,
+   "critic": 1
+  },
+  "input_tokens": 9738,
+  "output_tokens": 475,
+  "latency_s": 52.339,
+  "generation_time_s": 30.888,
+  "tokens_per_sec": 15.4,
+  "est_cost_usd": 0.0041089,
+  "status": "ok",
+  "trace_id": "04c16cf2d7cb507c4bcfed7ab4d551fc",
+  "errors": []
+ },
+ {
+  "id": "M2",
+  "answer": "The three highest-paid employees are Korra Notrealan (Head of Platform) with a salary of 6,140,000 INR, Ruvan Placeholdar (Head of Finance) with a salary of 5,980,000 INR, and Korra Mockerjee (Head of HR) with a salary of 5,140,000 INR. (employees.csv (3 rows matched))\n\nThe per-person limit for business meals (giving or receiving) is up to $125 per person, provided the host is present and the meal has a clear business purpose [acme_employee_policy_handbook.pdf p.4].",
+  "sources": [
+   {
+    "file": "acme_employee_policy_handbook.pdf",
+    "page": 4
+   },
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (3 rows matched)"
+   }
+  ],
+  "agents": [
+   "coordinator",
+   "table_agent",
+   "docs_agent",
+   "critic"
+  ],
+  "tools": [
+   "query_table",
+   "search_documents",
+   "docs_agent",
+   "table_agent"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "table_agent",
+    "start_s": 10.612,
+    "duration_s": 30.103,
+    "status": "success",
+    "args": {
+     "question": "Who are the three highest-paid employees?"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 41.897,
+    "duration_s": 0.014,
+    "status": "success",
+    "args": {
+     "question": "per-person limit for business meals"
+    }
+   },
+   {
+    "name": "docs_agent",
+    "agent": "coordinator",
+    "start_s": 0.972,
+    "duration_s": 53.111,
+    "status": null,
+    "args": {
+     "request": "What is the per-person limit for business meals?"
+    }
+   },
+   {
+    "name": "table_agent",
+    "agent": "coordinator",
+    "start_s": 0.968,
+    "duration_s": 58.174,
+    "status": null,
+    "args": {
+     "request": "Who are the three highest-paid employees?"
+    }
+   }
+  ],
+  "llm_calls": 8,
+  "llm_calls_by_agent": {
+   "coordinator": 2,
+   "table_agent": 2,
+   "query_table (kb tool)": 1,
+   "docs_agent": 2,
+   "critic": 1
+  },
+  "input_tokens": 6470,
+  "output_tokens": 474,
+  "latency_s": 69.746,
+  "generation_time_s": 60.691,
+  "tokens_per_sec": 7.8,
+  "est_cost_usd": 0.003126,
+  "status": "ok",
+  "trace_id": "cab1308964123daf3f442c9b74611d22",
+  "errors": []
+ },
+ {
+  "id": "M3",
+  "answer": "There are 27 employees who joined on or after 1 January 2023 (employees.csv (27 rows matched)). Employees receive up to five (5) paid days of bereavement leave for immediate family [acme_employee_policy_handbook.pdf p.8].",
+  "sources": [
+   {
+    "file": "acme_employee_policy_handbook.pdf",
+    "page": 8
+   },
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (27 rows matched)"
+   }
+  ],
+  "agents": [
+   "coordinator",
+   "table_agent",
+   "docs_agent",
+   "critic"
+  ],
+  "tools": [
+   "query_table",
+   "search_documents",
+   "table_agent",
+   "docs_agent"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "table_agent",
+    "start_s": 7.783,
+    "duration_s": 21.239,
+    "status": "success",
+    "args": {
+     "question": "How many employees joined on or after 1 January 2023?"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 30.318,
+    "duration_s": 0.012,
+    "status": "success",
+    "args": {
+     "question": "bereavement leave paid days",
+     "k": 4
+    }
+   },
+   {
+    "name": "table_agent",
+    "agent": "coordinator",
+    "start_s": 1.281,
+    "duration_s": 29.941,
+    "status": null,
+    "args": {
+     "request": "How many employees joined on or after 1 January 2023?"
+    }
+   },
+   {
+    "name": "docs_agent",
+    "agent": "coordinator",
+    "start_s": 1.286,
+    "duration_s": 36.385,
+    "status": null,
+    "args": {
+     "request": "How many paid days of bereavement leave do employees get?"
+    }
+   }
+  ],
+  "llm_calls": 8,
+  "llm_calls_by_agent": {
+   "coordinator": 2,
+   "table_agent": 2,
+   "query_table (kb tool)": 1,
+   "docs_agent": 2,
+   "critic": 1
+  },
+  "input_tokens": 5913,
+  "output_tokens": 356,
+  "latency_s": 49.279,
+  "generation_time_s": 34.515,
+  "tokens_per_sec": 10.3,
+  "est_cost_usd": 0.0026639,
+  "status": "ok",
+  "trace_id": "10fb85cc75e55f577be980f6b62bbb48",
+  "errors": []
+ },
+ {
+  "id": "U1",
+  "answer": "I don't know based on the provided documents.",
+  "sources": [],
+  "agents": [
+   "coordinator",
+   "critic"
+  ],
+  "tools": [],
+  "tool_calls": [],
+  "llm_calls": 2,
+  "llm_calls_by_agent": {
+   "coordinator": 1,
+   "critic": 1
+  },
+  "input_tokens": 532,
+  "output_tokens": 24,
+  "latency_s": 10.048,
+  "generation_time_s": 5.465,
+  "tokens_per_sec": 4.4,
+  "est_cost_usd": 0.0002196,
+  "status": "ok",
+  "trace_id": "a41d2eaa04c3fdd54e4d5c1c9754d8b3",
+  "errors": []
+ },
+ {
+  "id": "U2",
+  "answer": "I don't know based on the provided documents.",
+  "sources": [],
+  "agents": [
+   "coordinator",
+   "docs_agent",
+   "table_agent",
+   "coordinator",
+   "docs_agent",
+   "critic"
+  ],
+  "tools": [
+   "search_documents",
+   "search_documents",
+   "search_documents",
+   "docs_agent",
+   "query_table",
+   "transfer_to_agent",
+   "search_documents",
+   "search_documents",
+   "search_documents",
+   "docs_agent",
+   "table_agent"
+  ],
+  "tool_calls": [
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 7.538,
+    "duration_s": 0.887,
+    "status": "success",
+    "args": {
+     "question": "parking reimbursement Pune office limit"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 13.548,
+    "duration_s": 0.872,
+    "status": "success",
+    "args": {
+     "question": "Pune office parking reimbursement limit"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 27.561,
+    "duration_s": 0.015,
+    "status": "success",
+    "args": {
+     "question": "parking reimbursement"
+    }
+   },
+   {
+    "name": "docs_agent",
+    "agent": "coordinator",
+    "start_s": 1.352,
+    "duration_s": 31.524,
+    "status": null,
+    "args": {
+     "request": "What is the parking reimbursement limit for employees in the Pune office?"
+    }
+   },
+   {
+    "name": "query_table",
+    "agent": "table_agent",
+    "start_s": 49.248,
+    "duration_s": 11.303,
+    "status": "success",
+    "args": {
+     "question": "What is the parking reimbursement limit for employees in the Pune office?"
+    }
+   },
+   {
+    "name": "transfer_to_agent",
+    "agent": "table_agent",
+    "start_s": 66.359,
+    "duration_s": 0.0,
+    "status": null,
+    "args": {
+     "agent_name": "coordinator"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 78.133,
+    "duration_s": 0.014,
+    "status": "success",
+    "args": {
+     "question": "parking reimbursement limit Pune office"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 96.625,
+    "duration_s": 0.824,
+    "status": "success",
+    "args": {
+     "question": "parking reimbursement Pune"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "docs_agent",
+    "start_s": 105.723,
+    "duration_s": 0.82,
+    "status": "success",
+    "args": {
+     "question": "Pune office parking"
+    }
+   },
+   {
+    "name": "docs_agent",
+    "agent": "coordinator",
+    "start_s": 73.031,
+    "duration_s": 34.534,
+    "status": null,
+    "args": {
+     "request": "What is the parking reimbursement limit for employees in the Pune office?"
+    }
+   },
+   {
+    "name": "table_agent",
+    "agent": "coordinator",
+    "start_s": 35.548,
+    "duration_s": 78.534,
+    "status": null,
+    "args": {
+     "request": "What is the parking reimbursement limit for employees in the Pune office?"
+    }
+   }
+  ],
+  "llm_calls": 17,
+  "llm_calls_by_agent": {
+   "coordinator": 5,
+   "docs_agent": 8,
+   "table_agent": 2,
+   "query_table (kb tool)": 1,
+   "critic": 1
+  },
+  "input_tokens": 33157,
+  "output_tokens": 371,
+  "latency_s": 129.767,
+  "generation_time_s": 77.35,
+  "tokens_per_sec": 4.8,
+  "est_cost_usd": 0.0108746,
+  "status": "ok",
+  "trace_id": "7cc1068286af83dc01f72058a7178d8c",
+  "errors": []
+ }
+]

@@ -1,0 +1,564 @@
+[
+ {
+  "id": "D1",
+  "answer": "An employee must disclose any actual or potential conflict of interest in writing to their manager and the Ethics & Compliance Office within ten (10) business days of becoming aware of it [acme_employee_policy_handbook.pdf p.3].",
+  "sources": [
+   {
+    "file": "acme_employee_policy_handbook.pdf",
+    "page": 3
+   }
+  ],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "search_documents"
+  ],
+  "tool_calls": [
+   {
+    "name": "search_documents",
+    "agent": "single_agent",
+    "start_s": 2.045,
+    "duration_s": 1.977,
+    "status": "success",
+    "args": {
+     "question": "conflict of interest disclose business days"
+    }
+   }
+  ],
+  "llm_calls": 2,
+  "llm_calls_by_agent": {
+   "single_agent": 2
+  },
+  "input_tokens": 2299,
+  "output_tokens": 72,
+  "latency_s": 7.449,
+  "generation_time_s": 3.35,
+  "tokens_per_sec": 21.5,
+  "est_cost_usd": 0.0008697,
+  "status": "ok",
+  "trace_id": "b43ff792a9ec5f6497b3eb771234e1b7",
+  "errors": []
+ },
+ {
+  "id": "D2",
+  "answer": "You must report a lost or stolen device to **IT Security** immediately, and no later than **four (4) hours** after discovery [acme_employee_policy_handbook.pdf p. 7].",
+  "sources": [
+   {
+    "file": "acme_employee_policy_handbook.pdf",
+    "page": 7
+   }
+  ],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "search_documents"
+  ],
+  "tool_calls": [
+   {
+    "name": "search_documents",
+    "agent": "single_agent",
+    "start_s": 1.281,
+    "duration_s": 1.001,
+    "status": "success",
+    "args": {
+     "question": "lost work laptop report timeframe to whom"
+    }
+   }
+  ],
+  "llm_calls": 2,
+  "llm_calls_by_agent": {
+   "single_agent": 2
+  },
+  "input_tokens": 2400,
+  "output_tokens": 67,
+  "latency_s": 7.342,
+  "generation_time_s": 2.599,
+  "tokens_per_sec": 25.8,
+  "est_cost_usd": 0.0008875,
+  "status": "ok",
+  "trace_id": "7e9c65c86be66d6f51504befb764eb22",
+  "errors": []
+ },
+ {
+  "id": "D3",
+  "answer": "In the RAG paper, the difference between the two models lies in how they treat the retrieved documents as latent variables to marginalize and produce the output text [rag_lewis_2020.pdf p. 3]:\n\n* **RAG-Sequence Model:** This model uses the *same* retrieved document to generate the complete target sequence [rag_lewis_2020.pdf p. 3]. It treats the retrieved document as a single latent variable that is marginalized using a top-$K$ approximation to get the sequence-to-sequence probability $p(y|x)$ [rag_lewis_2020.pdf p. 3].\n* **RAG-Token Model:** This model can draw a *different* latent document for each target token [rag_lewis_2020.pdf p. 3]. This allows the generator to choose content from multiple different documents when producing an answer [rag_lewis_2020.pdf p. 3]. Concretely, the generator produces a distribution for the next output token for each retrieved document before marginalizing, and then repeats the process for each subsequent output token [rag_lewis_2020.pdf p. 3].",
+  "sources": [
+   {
+    "file": "rag_lewis_2020.pdf",
+    "page": 3
+   }
+  ],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "search_documents"
+  ],
+  "tool_calls": [
+   {
+    "name": "search_documents",
+    "agent": "single_agent",
+    "start_s": 1.955,
+    "duration_s": 1.045,
+    "status": "success",
+    "args": {
+     "question": "RAG-Sequence versus RAG-Token difference"
+    }
+   }
+  ],
+  "llm_calls": 2,
+  "llm_calls_by_agent": {
+   "single_agent": 2
+  },
+  "input_tokens": 2588,
+  "output_tokens": 289,
+  "latency_s": 15.035,
+  "generation_time_s": 10.948,
+  "tokens_per_sec": 26.4,
+  "est_cost_usd": 0.0014989,
+  "status": "ok",
+  "trace_id": "d45e21efbdb334bdeb3ace4eb8c94d5d",
+  "errors": []
+ },
+ {
+  "id": "D4",
+  "answer": "The base Transformer uses **8** parallel attention layers, or heads ($h = 8$) [attention_is_all_you_need.pdf p. 5, p. 9]. \n\nThe dimension of each key, value, and query head is $d_k = d_v = 64$ (calculated as $d_{\\text{model}} / h = 512 / 8 = 64$) [attention_is_all_you_need.pdf p. 5, p. 9].",
+  "sources": [],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "search_documents"
+  ],
+  "tool_calls": [
+   {
+    "name": "search_documents",
+    "agent": "single_agent",
+    "start_s": 0.911,
+    "duration_s": 0.704,
+    "status": "success",
+    "args": {
+     "question": "Transformer attention heads dimension base model"
+    }
+   }
+  ],
+  "llm_calls": 2,
+  "llm_calls_by_agent": {
+   "single_agent": 2
+  },
+  "input_tokens": 2782,
+  "output_tokens": 136,
+  "latency_s": 7.54,
+  "generation_time_s": 2.43,
+  "tokens_per_sec": 56.0,
+  "est_cost_usd": 0.0011746,
+  "status": "ok",
+  "trace_id": "b0c37c350557e444fe435465c2c59757",
+  "errors": []
+ },
+ {
+  "id": "T1",
+  "answer": "17 employees work in Hyderabad (employees.csv (17 rows matched)).",
+  "sources": [
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (17 rows matched)"
+   }
+  ],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "query_table"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "single_agent",
+    "start_s": 1.024,
+    "duration_s": 6.609,
+    "status": "success",
+    "args": {
+     "question": "How many employees work in Hyderabad?"
+    }
+   }
+  ],
+  "llm_calls": 3,
+  "llm_calls_by_agent": {
+   "single_agent": 2,
+   "query_table (kb tool)": 1
+  },
+  "input_tokens": 2021,
+  "output_tokens": 135,
+  "latency_s": 13.293,
+  "generation_time_s": 8.906,
+  "tokens_per_sec": 15.2,
+  "est_cost_usd": 0.0009438,
+  "status": "ok",
+  "trace_id": "d71bf9e0d292f4aa798373ab3cea077d",
+  "errors": []
+ },
+ {
+  "id": "T2",
+  "answer": "The average salary in the Sales team is 2,743,636.36 INR (employees.csv (11 rows matched)).",
+  "sources": [
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (11 rows matched)"
+   }
+  ],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "query_table"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "single_agent",
+    "start_s": 1.211,
+    "duration_s": 6.589,
+    "status": "success",
+    "args": {
+     "question": "What is the average salary in the Sales team?"
+    }
+   }
+  ],
+  "llm_calls": 3,
+  "llm_calls_by_agent": {
+   "single_agent": 2,
+   "query_table (kb tool)": 1
+  },
+  "input_tokens": 2048,
+  "output_tokens": 159,
+  "latency_s": 12.899,
+  "generation_time_s": 8.668,
+  "tokens_per_sec": 18.3,
+  "est_cost_usd": 0.0010119,
+  "status": "ok",
+  "trace_id": "2b89f2d7c7c5e00f933613333422012e",
+  "errors": []
+ },
+ {
+  "id": "T3",
+  "answer": "The team with the fewest employees is the HR team, with 6 employees (employees.csv (60 rows matched)).",
+  "sources": [
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (60 rows matched)"
+   }
+  ],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "query_table"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "single_agent",
+    "start_s": 1.195,
+    "duration_s": 6.08,
+    "status": "success",
+    "args": {
+     "question": "Which team has the fewest employees?"
+    }
+   }
+  ],
+  "llm_calls": 3,
+  "llm_calls_by_agent": {
+   "single_agent": 2,
+   "query_table (kb tool)": 1
+  },
+  "input_tokens": 2055,
+  "output_tokens": 120,
+  "latency_s": 13.066,
+  "generation_time_s": 8.308,
+  "tokens_per_sec": 14.4,
+  "est_cost_usd": 0.0009165,
+  "status": "ok",
+  "trace_id": "40784580ca6e7ba664ee0fd5881e35ea",
+  "errors": []
+ },
+ {
+  "id": "M1",
+  "answer": "There are 14 people in the Data team (employees.csv (14 rows matched)).\n\nAccording to the employee handbook, the remote and hybrid work policy states that [acme_employee_policy_handbook.pdf p.7]:\n* Many roles at Acme support remote or hybrid schedules, with eligibility determined by role and business need [acme_employee_policy_handbook.pdf p.7].\n* Remote employees are expected to [acme_employee_policy_handbook.pdf p.7]:\n  * Maintain a safe, ergonomic, and professional workspace [acme_employee_policy_handbook.pdf p.7].\n  * Be reachable and responsive during agreed core hours [acme_employee_policy_handbook.pdf p.7].\n  * Protect Acme data and use secure networks (VPN required for restricted systems) [acme_employee_policy_handbook.pdf p.7].\n  * Report tax or immigration implications of cross-border remote work to HR before relocating, even temporarily [acme_employee_policy_handbook.pdf p.7].",
+  "sources": [
+   {
+    "file": "acme_employee_policy_handbook.pdf",
+    "page": 7
+   },
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (14 rows matched)"
+   }
+  ],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "query_table",
+   "search_documents"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "single_agent",
+    "start_s": 3.029,
+    "duration_s": 10.597,
+    "status": "success",
+    "args": {
+     "question": "How many employees are in the Data team?"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "single_agent",
+    "start_s": 13.626,
+    "duration_s": 0.897,
+    "status": "success",
+    "args": {
+     "question": "remote work policy"
+    }
+   }
+  ],
+  "llm_calls": 3,
+  "llm_calls_by_agent": {
+   "single_agent": 2,
+   "query_table (kb tool)": 1
+  },
+  "input_tokens": 3033,
+  "output_tokens": 375,
+  "latency_s": 25.491,
+  "generation_time_s": 20.329,
+  "tokens_per_sec": 18.4,
+  "est_cost_usd": 0.0018474,
+  "status": "ok",
+  "trace_id": "83f014d341bd3617f6b6b3da15335ef5",
+  "errors": []
+ },
+ {
+  "id": "M2",
+  "answer": "The three highest-paid employees are:\n1. **Korra Notrealan** (Head of Platform, Hyderabad) – ₹6,140,000 [employees.csv (3 rows matched)]\n2. **Ruvan Placeholdar** (Head of Finance, Bengaluru) – ₹5,980,000 [employees.csv (3 rows matched)]\n3. **Korra Mockerjee** (Head of HR, Hyderabad) – ₹5,140,000 [employees.csv (3 rows matched)]\n\nThe per-person limit for business meals (giving or receiving) is **$125 per person**, provided the host is present and the meal has a clear business purpose [acme_employee_policy_handbook.pdf p. 4].",
+  "sources": [
+   {
+    "file": "acme_employee_policy_handbook.pdf",
+    "page": 4
+   },
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (3 rows matched)"
+   }
+  ],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "query_table",
+   "search_documents"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "single_agent",
+    "start_s": 1.616,
+    "duration_s": 6.046,
+    "status": "success",
+    "args": {
+     "question": "Who are the three highest-paid employees?"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "single_agent",
+    "start_s": 7.663,
+    "duration_s": 0.85,
+    "status": "success",
+    "args": {
+     "question": "per-person limit for business meals"
+    }
+   }
+  ],
+  "llm_calls": 3,
+  "llm_calls_by_agent": {
+   "single_agent": 2,
+   "query_table (kb tool)": 1
+  },
+  "input_tokens": 3097,
+  "output_tokens": 288,
+  "latency_s": 13.966,
+  "generation_time_s": 9.607,
+  "tokens_per_sec": 30.0,
+  "est_cost_usd": 0.0016491,
+  "status": "ok",
+  "trace_id": "e2a3e53165f223a7174c814d285b6ad9",
+  "errors": []
+ },
+ {
+  "id": "M3",
+  "answer": "- There are 27 employees who joined on or after 1 January 2023 (employees.csv (27 rows matched)).\n- Employees get up to five (5) paid days of bereavement leave for immediate family [acme_employee_policy_handbook.pdf p. 8].",
+  "sources": [
+   {
+    "file": "acme_employee_policy_handbook.pdf",
+    "page": 8
+   },
+   {
+    "file": "employees.csv",
+    "label": "employees.csv (27 rows matched)"
+   }
+  ],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "query_table",
+   "search_documents"
+  ],
+  "tool_calls": [
+   {
+    "name": "query_table",
+    "agent": "single_agent",
+    "start_s": 1.548,
+    "duration_s": 6.142,
+    "status": "success",
+    "args": {
+     "question": "How many employees joined on or after 1 January 2023?"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "single_agent",
+    "start_s": 7.691,
+    "duration_s": 0.739,
+    "status": "success",
+    "args": {
+     "question": "bereavement leave paid days"
+    }
+   }
+  ],
+  "llm_calls": 3,
+  "llm_calls_by_agent": {
+   "single_agent": 2,
+   "query_table (kb tool)": 1
+  },
+  "input_tokens": 3047,
+  "output_tokens": 225,
+  "latency_s": 13.209,
+  "generation_time_s": 8.876,
+  "tokens_per_sec": 25.3,
+  "est_cost_usd": 0.0014766,
+  "status": "ok",
+  "trace_id": "a38a08a34feb9dc9b50d02f7fd0066cf",
+  "errors": []
+ },
+ {
+  "id": "U1",
+  "answer": "I don't know based on the provided documents.",
+  "sources": [],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "search_documents",
+   "query_table"
+  ],
+  "tool_calls": [
+   {
+    "name": "search_documents",
+    "agent": "single_agent",
+    "start_s": 1.015,
+    "duration_s": 0.676,
+    "status": "success",
+    "args": {
+     "question": "CEO favourite colour"
+    }
+   },
+   {
+    "name": "query_table",
+    "agent": "single_agent",
+    "start_s": 7.297,
+    "duration_s": 6.382,
+    "status": "success",
+    "args": {
+     "question": "Who is the CEO and what is their favourite colour?"
+    }
+   }
+  ],
+  "llm_calls": 4,
+  "llm_calls_by_agent": {
+   "single_agent": 3,
+   "query_table (kb tool)": 1
+  },
+  "input_tokens": 6498,
+  "output_tokens": 120,
+  "latency_s": 19.138,
+  "generation_time_s": 9.805,
+  "tokens_per_sec": 12.2,
+  "est_cost_usd": 0.0022494,
+  "status": "ok",
+  "trace_id": "1eb92b02434966d2d20e20d2f6980062",
+  "errors": []
+ },
+ {
+  "id": "U2",
+  "answer": "I don't know based on the provided documents.",
+  "sources": [],
+  "agents": [
+   "single_agent"
+  ],
+  "tools": [
+   "search_documents",
+   "search_documents",
+   "search_documents"
+  ],
+  "tool_calls": [
+   {
+    "name": "search_documents",
+    "agent": "single_agent",
+    "start_s": 0.957,
+    "duration_s": 1.039,
+    "status": "success",
+    "args": {
+     "question": "parking reimbursement Pune office"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "single_agent",
+    "start_s": 7.136,
+    "duration_s": 1.108,
+    "status": "success",
+    "args": {
+     "question": "parking reimbursement"
+    }
+   },
+   {
+    "name": "search_documents",
+    "agent": "single_agent",
+    "start_s": 20.186,
+    "duration_s": 0.956,
+    "status": "success",
+    "args": {
+     "question": "Pune office OR commute OR transport"
+    }
+   }
+  ],
+  "llm_calls": 4,
+  "llm_calls_by_agent": {
+   "single_agent": 4
+  },
+  "input_tokens": 7810,
+  "output_tokens": 68,
+  "latency_s": 22.252,
+  "generation_time_s": 11.35,
+  "tokens_per_sec": 6.0,
+  "est_cost_usd": 0.002513,
+  "status": "ok",
+  "trace_id": "2c183a6638d85ff1809c9a008c5c7e08",
+  "errors": []
+ }
+]
