@@ -12,13 +12,12 @@ from pathlib import Path
 from typing import Any, Callable
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
 
-import pandas as pd  # noqa: E402
+import pandas as pd
 
-from kb.config import load_settings  # noqa: E402
-from kb.router import route  # noqa: E402
-from kb.structured import load_table, query_table  # noqa: E402
+from kb.config import load_settings
+from kb.router import route
+from kb.structured import load_table, query_table
 
 
 def values_in(result: list[dict[str, Any]]) -> list[Any]:
@@ -64,8 +63,7 @@ def build_cases(df: pd.DataFrame) -> list[dict[str, Any]]:
          "check": has_number(mean_platform)},
         {"q": "Which team has the most employees?", "truth": f"{biggest.index[0]} ({biggest.iloc[0]})",
          "check": biggest_team},
-        # Added after a real bug: an ignored sort made "top 1" = first team alphabetically ("Data"),
-        # which is also the biggest team, so the question above passed by luck. HR is the smallest.
+        # "Data" is both biggest and first alphabetically, so this catches an ignored sort.
         {"q": "Which team has the fewest employees?", "truth": f"{biggest.index[-1]} ({biggest.iloc[-1]})",
          "check": smallest_team},
         {"q": "Who are the three highest-paid employees?", "truth": top3, "check": has_names(top3)},

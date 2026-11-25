@@ -18,12 +18,11 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
 
-from kb import store  # noqa: E402
-from kb.config import Settings, collection_name, load_settings  # noqa: E402
-from kb.embeddings import embed_query  # noqa: E402
-from kb.rag import build_knowledge_base  # noqa: E402
+from kb import store
+from kb.config import Settings, collection_name, load_settings
+from kb.embeddings import embed_query
+from kb.rag import build_knowledge_base
 
 MAX_K = 10
 REPORT_KS = (1, 3, 5)

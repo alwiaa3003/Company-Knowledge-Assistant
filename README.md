@@ -21,6 +21,7 @@ their source**: `[file p.N]` for PDFs, `employees.csv (N rows matched)` for the 
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1          # if blocked: Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 pip install -r requirements.txt
+pip install -e .                       # makes `kb` and `kl_agents` importable from anywhere
 Copy-Item .env.example .env            # then paste your key from https://aistudio.google.com/apikey
 python smoke_test.py                   # key, generation, embedding, Chroma
 ```
@@ -55,7 +56,6 @@ Results and analysis: [eval/results.md](eval/results.md).
 
 ## Use from Python (and as ADK tools)
 ```python
-import sys; sys.path.insert(0, "src")
 from kb.rag import answer_question
 from kb.structured import query_table
 answer_question("Can I accept a $200 gift from a supplier?", k=4)
@@ -91,3 +91,68 @@ chroma_db/ .cache/ logs/   generated, git-ignored
 names change often, so check the [models page](https://ai.google.dev/gemini-api/docs/models). Switching
 the embedding model means re-running `ingest` (old and new vectors aren't comparable).
 Free-tier note: Google may use free-tier prompts to improve its products, so don't upload confidential documents.
+
+## Project 2: multi-agent layer (Google ADK)
+
+The Project 1 functions are reused as tools in a [Google ADK](https://adk.dev) multi-agent system
+(`google-adk==2.15.0`).
+
+```
+                 user question
+                       |
+          Workflow "knowledge_lens" (ADK graph)
+                       |
+              coordinator (LlmAgent)   splits multi-part questions, merges answers, keeps citations
+               /                \
+     docs_agent                  table_agent           sub-agents, exposed to the coordinator as tools
+     ReAct, <= 3 searches        1 call
+     tool: search_documents      tool: query_table
+     (Chroma retrieval, no LLM)  (JSON spec -> pandas)
+               \                /
+                  draft answer
+                       |
+              critic (LlmAgent, structured output: APPROVE | REVISE + problems)
+                 |                 |
+              APPROVE           REVISE -> reviser (one revision, evidence only)
+                 \                 /
+                    finalize -> answer with [file p.N] / employees.csv (N rows matched)
+```
+
+Tools never raise: they return `{"status": "success" | "error", ...}`. Callbacks enforce the shared rate
+limit, block repeated identical delegations, and record per-request metrics. These are written to
+`logs/agent_requests.jsonl` (latency, LLM calls per agent, tokens, tokens/sec, estimated cost) and
+`logs/agent_traces.jsonl` (ADK OpenTelemetry spans).
+
+### Run it (Git Bash, from the project root)
+```bash
+source .venv/Scripts/activate
+pip install -r requirements.txt && pip install -e .
+python agents_cli.py ask "How many people work in the Finance team, and how soon must expense reports be submitted?"
+python agents_cli.py ask "How many employees work in Pune?" --system single   # single agent, both tools
+python agents_cli.py chat                                                     # multi-turn, same session
+adk run agents/knowledge_agent                                                # ADK's own CLI
+adk web --port 8000 agents                                                    # then open http://localhost:8000
+python scripts/metrics_summary.py --last 20                                   # p50/p95 latency, cost, tok/s
+python scripts/trace_report.py --list                                         # then --trace <id prefix>
+python eval/run_agent_eval.py --system single                                 # also hierarchy_noreflect / hierarchy
+python eval/critic_probe.py                                                   # critic vs planted errors
+```
+
+### Results: single agent vs hierarchy (12 questions, real free-tier runs)
+| System | Correct | Avg LLM calls | Avg latency | p95 latency | Avg est. cost/req |
+|---|---|---|---|---|---|
+| (a) single agent, both tools | 12/12 | 2.8 | 14.2 s | 22.3 s | $0.00142 |
+| (b) coordinator + specialists | 12/12 | 5.2 | 29.3 s | 38.1 s | $0.00167 |
+| (c) + reflection critic | 12/12 | 6.1 | 34.6 s | 48.9 s | $0.00184 |
+
+On this eval the hierarchy matched the single agent's quality at about 2× the calls and latency. The critic caught 3/3
+planted errors but never had to revise a real draft. Details, bugs found and caveats are in
+[eval/agent_results.md](eval/agent_results.md). Latency is dominated by self-imposed free-tier pacing (`GEN_RPM=10`).
+
+| New path | What it is |
+|---|---|
+| `src/kl_agents/` | tools, agent builders, callbacks, telemetry, runner |
+| `agents/knowledge_agent/`, `agents/single_agent/` | ADK app folders (`root_agent`) for `adk run` / `adk web` |
+| `agents_cli.py` | `ask` / `chat` with `--system hierarchy`, `hierarchy_noreflect` or `single` |
+| `eval/agent_eval.json`, `eval/run_agent_eval.py`, `eval/critic_probe.py` | agent eval and critic probe |
+| `scripts/metrics_summary.py`, `scripts/trace_report.py` | metrics and trace reports from the logs |

@@ -23,14 +23,20 @@ from kb.config import Settings, estimate_cost
 
 T = TypeVar("T")
 RETRYABLE_CODES = {429, 500, 502, 503, 504}
-# Transport-level failures: no HTTP response at all (e.g. httpx.ConnectError "getaddrinfo failed").
-# httpx.TransportError covers ConnectError, ReadError, timeouts, etc.
+# No HTTP response at all (DNS failure, connection reset, timeout).
 NETWORK_ERRORS: tuple[type[BaseException], ...] = (httpx.TransportError, ConnectionError, TimeoutError)
 MAX_NETWORK_ATTEMPTS = 5
 
 
+MAX_HINTED_WAIT_S = 120.0  # longer hinted waits mean the daily quota is gone
+
+
 class GeminiUnavailableError(RuntimeError):
     """Raised when Gemini can't be reached after all retries (network down, DNS, timeouts)."""
+
+
+class QuotaExhaustedError(GeminiUnavailableError):
+    """Raised when a 429 asks for a very long wait (daily free-tier quota used up). Waiting hours is never useful."""
 
 
 @dataclass
@@ -71,12 +77,20 @@ class RateLimiter:
         self._next = 0.0
         self._lock = threading.Lock()
 
-    def wait(self) -> None:
-        """Block until the next call is allowed."""
+    def reserve(self) -> float:
+        """Book the next call slot and return how many seconds to wait before using it.
+
+        Non-blocking, so async code (ADK callbacks) can `await asyncio.sleep(delay)` instead.
+        """
         with self._lock:
             now = time.monotonic()
             delay = self._next - now
             self._next = max(now, self._next) + self.interval
+        return max(delay, 0.0)
+
+    def wait(self) -> None:
+        """Block until the next call is allowed."""
+        delay = self.reserve()
         if delay > 0:
             time.sleep(delay)
 
@@ -125,10 +139,15 @@ def call_with_retry(fn: Callable[[], T], limiter: RateLimiter, max_attempts: int
             if err.code not in RETRYABLE_CODES or attempt == max_attempts:
                 raise
             hinted = _retry_delay_from_error(err) if err.code == 429 else None
-            delay = hinted if hinted is not None else min(max_delay, base_delay * 2 ** (attempt - 1))
-            delay += random.uniform(0, 1)
             quota = re.search(r"quota(?:Metric|Id)['\"]?\s*[:=]\s*['\"]([^'\"]+)", str(err))
             detail = f" [{quota.group(1).rsplit('/', 1)[-1]}]" if quota else ""
+            if hinted is not None and hinted > MAX_HINTED_WAIT_S:
+                raise QuotaExhaustedError(
+                    f"Gemini quota exhausted{detail}: the server asks to wait {hinted:.0f}s "
+                    f"(> {MAX_HINTED_WAIT_S:.0f}s). Likely the daily free-tier limit; try again later."
+                ) from err
+            delay = hinted if hinted is not None else min(max_delay, base_delay * 2 ** (attempt - 1))
+            delay += random.uniform(0, 1)
             print(f"  [retry] Gemini returned {err.code}{detail}; waiting {delay:.1f}s (attempt {attempt}/{max_attempts})")
             time.sleep(delay)
     raise RuntimeError("unreachable")

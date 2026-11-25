@@ -163,10 +163,7 @@ def execute_spec(spec: QuerySpec, df: pd.DataFrame) -> tuple[pd.DataFrame, pd.Da
     if spec.sort_by and spec.sort_by in result.columns:
         result = result.sort_values(spec.sort_by, ascending=not spec.sort_desc)
     elif agg != "none" and spec.group_by:
-        # After grouping, only group_by + the aggregate column exist. If the model asked to sort by
-        # anything else (e.g. "employee_id" for "which team has the most employees"), the only
-        # meaningful sort is by the aggregate. Silently skipping the sort made "top 1" = first
-        # group alphabetically, which was right only by luck.
+        # After grouping, sort_by may name a column that no longer exists; sort by the aggregate.
         result = result.sort_values(result.columns[-1], ascending=not spec.sort_desc)
     if spec.limit:
         result = result.head(spec.limit)
@@ -211,8 +208,11 @@ def phrase_answer(settings: Settings, question: str, result: pd.DataFrame, n_mat
     return res.text, res.usage
 
 
-def query_table(question: str) -> dict[str, Any]:
+def query_table(question: str, phrase: bool = True) -> dict[str, Any]:
     """Answer a question over the employees table. JSON-friendly; safe to expose as an agent tool.
+
+    phrase=False skips the second LLM call that turns the result into a sentence ("answer" is then
+    empty); agents use this because their own model writes the final answer (saves a free-tier call).
 
     Returns {"answer", "result": [rows], "spec": {...}, "sources": [{"file","rows"}],
              "route": "table", "usage": {...}}. On a bad spec, returns an "error" field instead of raising.
@@ -228,8 +228,10 @@ def query_table(question: str) -> dict[str, Any]:
     except SpecError as exc:
         return {"answer": f"I couldn't translate that into a safe table query ({exc}).", "result": [],
                 "spec": None, "sources": [], "route": "table", "error": str(exc), "usage": usage.to_dict()}
-    answer, u2 = phrase_answer(settings, question, result, len(matched))
-    usage += u2
+    answer = ""
+    if phrase:
+        answer, u2 = phrase_answer(settings, question, result, len(matched))
+        usage += u2
     row_numbers = [int(i) + 1 for i in matched.index]  # 1-based data row numbers in the CSV
     out = {
         "answer": answer,
@@ -242,5 +244,5 @@ def query_table(question: str) -> dict[str, Any]:
         "usage": {**usage.to_dict(), "latency_s": round(time.perf_counter() - start, 3)},
     }
     log_request(settings.logs_dir, {"route": "table", "question": question, "usage": out["usage"],
-                                    "rows_matched": len(matched)})
+                                    "rows_matched": len(matched), "phrased": phrase})
     return out

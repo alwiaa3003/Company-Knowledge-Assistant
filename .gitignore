@@ -25,3 +25,7 @@ LEARNING.md
 ADK_LEARNING.md
 .claude/
 data/docs/*.pdf
+
+# Packaging (pip install -e .) and ADK local session stores (adk run / adk web)
+*.egg-info/
+.adk/

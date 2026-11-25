@@ -1,4 +1,6 @@
-google-genai>=1.0
+google-adk==2.15.0
+# google-adk 2.15.0 requires google-genai>=2.34,<3 (pip downgraded it from 3.6.1; Project 1 re-verified on 2.34.0)
+google-genai==2.34.0
 chromadb>=1.0
 pypdf>=5.0
 pandas>=2.2

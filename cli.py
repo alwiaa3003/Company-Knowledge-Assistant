@@ -13,9 +13,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
-sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 
-from kb.config import load_settings  # noqa: E402
+from kb.config import load_settings
 
 LINE = "-" * 72
 
